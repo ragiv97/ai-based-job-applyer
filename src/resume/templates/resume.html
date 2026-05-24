@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+    @page {
+        size: letter;
+        margin: 0.6in 0.7in;
+    }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10.5pt;
+        line-height: 1.4;
+        color: #1a1a1a;
+    }
+    h1 {
+        font-size: 20pt;
+        font-weight: bold;
+        margin-bottom: 4px;
+        color: #111;
+    }
+    .contact {
+        font-size: 9.5pt;
+        color: #444;
+        margin-bottom: 12px;
+    }
+    .contact a {
+        color: #444;
+        text-decoration: none;
+    }
+    h2 {
+        font-size: 12pt;
+        font-weight: bold;
+        text-transform: uppercase;
+        border-bottom: 1.5px solid #333;
+        padding-bottom: 2px;
+        margin-top: 14px;
+        margin-bottom: 6px;
+        color: #222;
+        letter-spacing: 0.5px;
+    }
+    .summary {
+        margin-bottom: 4px;
+        font-size: 10pt;
+    }
+    .job {
+        margin-bottom: 10px;
+    }
+    .job-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+    .job-title {
+        font-weight: bold;
+        font-size: 11pt;
+    }
+    .job-company {
+        font-style: italic;
+    }
+    .job-duration {
+        font-size: 9.5pt;
+        color: #555;
+        white-space: nowrap;
+    }
+    ul {
+        margin-left: 18px;
+        margin-top: 3px;
+    }
+    li {
+        margin-bottom: 2px;
+    }
+    .skills-list {
+        list-style: none;
+        margin-left: 0;
+        padding: 0;
+    }
+    .skills-list li {
+        display: inline;
+    }
+    .skills-list li:after {
+        content: " \2022 ";
+        color: #888;
+    }
+    .skills-list li:last-child:after {
+        content: "";
+    }
+    .edu-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 3px;
+    }
+    .project {
+        margin-bottom: 6px;
+    }
+    .project-name {
+        font-weight: bold;
+    }
+    .project-tech {
+        font-style: italic;
+        font-size: 9.5pt;
+        color: #555;
+    }
+</style>
+</head>
+<body>
+
+<h1>{{ name }}</h1>
+<div class="contact">
+    {{ contact.email }}
+    {% if contact.phone %} | {{ contact.phone }}{% endif %}
+    {% if contact.linkedin %} | <a href="{{ contact.linkedin }}">{{ contact.linkedin }}</a>{% endif %}
+</div>
+
+{% if summary %}
+<h2>Summary</h2>
+<p class="summary">{{ summary }}</p>
+{% endif %}
+
+{% if experience %}
+<h2>Experience</h2>
+{% for exp in experience %}
+<div class="job">
+    <div class="job-header">
+        <div>
+            <span class="job-title">{{ exp.title }}</span>
+            {% if exp.company %}<span class="job-company"> — {{ exp.company }}</span>{% endif %}
+        </div>
+        {% if exp.duration %}<span class="job-duration">{{ exp.duration }}</span>{% endif %}
+    </div>
+    {% if exp.bullets %}
+    <ul>
+        {% for bullet in exp.bullets %}
+        <li>{{ bullet }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+{% endfor %}
+{% endif %}
+
+{% if education %}
+<h2>Education</h2>
+{% for edu in education %}
+<div class="edu-row">
+    <div><strong>{{ edu.degree }}</strong> — {{ edu.institution }}</div>
+    {% if edu.year %}<span class="job-duration">{{ edu.year }}</span>{% endif %}
+</div>
+{% endfor %}
+{% endif %}
+
+{% if skills %}
+<h2>Skills</h2>
+<ul class="skills-list">
+    {% for skill in skills %}
+    <li>{{ skill }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if projects %}
+<h2>Projects</h2>
+{% for proj in projects %}
+<div class="project">
+    <span class="project-name">{{ proj.name }}</span>
+    {% if proj.tech %}<span class="project-tech"> ({{ proj.tech }})</span>{% endif %}
+    {% if proj.description %}<br>{{ proj.description }}{% endif %}
+</div>
+{% endfor %}
+{% endif %}
+
+</body>
+</html>

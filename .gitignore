@@ -1,0 +1,13 @@
+.env
+.DS_Store
+config.yaml
+venv/
+__pycache__/
+*.pyc
+data/jobs.db
+data/base_resume.pdf
+tailored_resumes/
+logs/
+*.egg-info/
+.pytest_cache/
+browser_data/

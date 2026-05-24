@@ -1,0 +1,43 @@
+job_search:
+  keywords:
+    - "Python QA Engineer"
+    - "QA Automation Engineer"
+    - "QA Automation"
+    - "Automation Engineer"
+    - "SDET"
+    - "Test Engineer"
+    - "Quality Engineer"
+    - "Quality Assurance"
+  locations:
+    - "Remote"
+  countries:
+    - "India"
+    - "USA"
+    - "UK"
+  experience_years: 5
+  min_relevance_score: 6
+  max_applications_per_day: 20
+  blacklisted_companies:
+    - "MLM Company"
+
+platforms:
+  linkedin: true
+  naukri: true
+  indeed: true
+  glassdoor: true
+  google_jobs: true
+  ziprecruiter: false
+
+schedule:
+  run_time: "08:00"
+  timezone: "Asia/Kolkata"
+
+applicant_profile:
+  name: "Your Name"
+  email: "your.email@example.com"
+  phone: "+00-0000000000"
+  linkedin_url: "https://www.linkedin.com/in/your-handle/"
+  work_authorization: "Yes"
+  willing_to_relocate: false
+  expected_salary: "0-0 LPA"
+  notice_period: "30 days"
